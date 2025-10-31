@@ -9,6 +9,7 @@ on:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -31,4 +32,3 @@ jobs:
 
       - name: Verify pushed image
         run: docker pull ${{ secrets.DOCKERHUB_USERNAME }}/wisecow:latest
-
