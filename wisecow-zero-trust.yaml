@@ -1,0 +1,18 @@
+apiVersion: security.kubearmor.com/v1
+kind: KubeArmorPolicy
+metadata:
+  name: wisecow-zero-trust
+  namespace: default
+spec:
+  severity: 5
+  message: "Zero Trust: Block unauthorized access to sensitive files"
+  selector:
+    matchLabels:
+      app: wisecow
+  file:
+    matchDirectories:
+      - dir: /etc/
+        recursive: true
+      - dir: /root/
+        recursive: true
+    action: Block
